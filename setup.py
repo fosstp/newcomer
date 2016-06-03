@@ -18,6 +18,7 @@ requires = [
     'pyramid_sqlalchemy',
     'pyramid_redis_sessions',
     'alembic',
+    'xlwt',
     'waitress',
     ]
 
