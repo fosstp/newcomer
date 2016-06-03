@@ -41,9 +41,9 @@ cd ~/git/newcomer
 cp production.ini.sample production.ini
 
 更改 production.ini
-7.1 一般來說資料庫跑 sqlite3 就很夠了，所以可以啟用 sqlite3 backend:
+7.1 一般來說資料庫跑 sqlite3 就很夠了，所以可以啟用 sqlite3 backend。比方以下範例是指定資料庫檔案位置在 /foo/bar/database.db:
 
-sqlalchemy.url = sqlite:////absolute/path/to/foo.db
+sqlalchemy.url = sqlite:////foo/bar/database.db
 
 7.2 設定學校名稱
 
