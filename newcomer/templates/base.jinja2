@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>{% block title %}Starter Template for Bootstrap{% endblock %}</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{'newcomer:static/css/bootstrap.min.css'|static_url}}" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-inverse" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">{{ request.registry.settings['school_name'] }}新生入學系統</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+              <li{% block signup_stats %}{% endblock %}><a href="{{ 'home'|route_path }}">報到</a></li>
+              <li{% block add_stats %}{% endblock %}><a href="{{ 'add'|route_path }}">新增</a></li>
+              <li{% block signup_detail_stats %}{% endblock %}><a href="{{ 'signup_detail'|route_path }}">顯示已報到學生資訊</a></li>
+              <li{% block upload_via_enroll_stats %}{% endblock %}><a href="{{ 'upload_via_enroll'|route_path }}">上傳新生分發名單</a></li>
+              <li><a href="{{ 'export_to_schoolsoft'|route_path }}">匯出至校務系統（編班用）</a></li>
+              <li{% block upload_via_schoolsoft_stats %}{% endblock %}><a href="{{ 'upload_via_schoolsoft'|route_path }}">匯入校務系統（更新學號等資料）</a></li>
+              <li><a href="{{ 'export_to_enroll'|route_path }}">匯出至 enroll 系統</a></li>
+              <li><a href="{{ 'export_to_moe'|route_path }}">匯出至教育部系統</a></li>
+              <li><a href="{{ 'export_to_ecard'|route_path }}">匯出大頭照</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+      {% block content %}
+
+        <h1>Bootstrap starter template</h1>
+        <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
+
+      {% endblock %}
+    </div><!-- /.container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="{{ 'newcomer:static/js/jquery.min.js'|static_url }}"></script>
+    <script src="{{ 'newcomer:static/js/bootstrap.min.js'|static_url }}"></script>
+  </body>
+</html>

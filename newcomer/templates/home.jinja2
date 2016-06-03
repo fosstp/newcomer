@@ -1,0 +1,39 @@
+{% extends "base.jinja2" %}
+{% block signup_stats %} class="active"{% endblock signup_stats %}
+{% block title %}{{ request.registry.settings['school_name'] }}新生入學系統{% endblock %}
+{% block content %}
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>序號</th>
+        <th>學童姓名</th>
+        <th>學童身份證號</th>
+        <th>戶長姓名</th>
+        <th>戶長身份證號</th>
+        <th>狀態</th>
+        <th>動作</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for new_comer in new_comers %}
+        <tr>
+          <td>{{ loop.index }}</td>
+          <td>{{ new_comer.name }}</td>
+          <td>{{ new_comer.id_number }}</td>
+          <td>{{ new_comer.parent_name }}</td>
+          <td>{{ new_comer.parent_id_number }}</td>
+          {% if new_comer.status == 0 %}
+            <td>未報到</td>
+          {% elif new_comer.status == 1 %}
+            <td class="success">已報到</td>
+          {% elif new_comer.status == 2 %}
+            <td class="info">他校報到</td>
+          {% elif new_comer.status == 3 %}
+            <td class="info">出國</td>
+          {% endif%}
+          <td><a href="{{ request.route_path('edit', id=new_comer.id) }}" class="btn btn-primary">修改</a></td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

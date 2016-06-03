@@ -1,0 +1,214 @@
+{% extends "base.jinja2" %}
+{% block title %}編輯{% endblock %}
+{% block content %}
+<form action="" enctype="multipart/form-data" method="post">
+  
+  <p><span style="color: red;">*</span> 為必填欄位</p>
+  {{ form.id() }}
+
+  <div class="form-group">
+      {% if form.signup_number.errors %}
+        {% for error in form.signup_number.errors %}
+          <div class="alert alert-danger">{{ error }}</div>
+        {% endfor %}
+      {% endif %}
+      {{ form.signup_number.label() }}
+      {{ form.signup_number(class="form-control") }}
+  </div>
+
+  <div class="form-group">
+      {% if form.name.errors %}
+        {% for error in form.name.errors %}
+          <div class="alert alert-danger">{{ error }}</div>
+        {% endfor %}
+      {% endif %}
+      <span style="color: red;">*</span> {{ form.name.label() }}
+      {{ form.name(class="form-control") }}
+  </div>
+
+  <div class="form-group">
+      {% if form.parent_name.errors %}
+        {% for error in form.parent_name.errors %}
+          <div class="alert alert-danger">{{ error }}</div>
+        {% endfor %}
+      {% endif %}
+      <span style="color: red;">*</span> {{ form.parent_name.label() }}
+      {{ form.parent_name(class="form-control") }}
+  </div>
+
+  <div class="form-group">
+      {% if form.id_number.errors %}
+        {% for error in form.id_number.errors %}
+          <div class="alert alert-danger">{{ error }}</div>
+        {% endfor %}
+      {% endif %}
+      <span style="color: red;">*</span> {{ form.id_number.label() }}
+      {{ form.id_number(class="form-control", readonly="readonly") }}
+  </div>
+
+  <div class="form-group">
+      {% if form.parent_id_number.errors %}
+        {% for error in form.parent_id_number.errors %}
+          <div class="alert alert-danger">{{ error }}</div>
+        {% endfor %}
+      {% endif %}
+      <span style="color: red;">*</span> {{ form.parent_id_number.label() }}
+      {{ form.parent_id_number(class="form-control", readonly="readonly") }}
+  </div>
+
+  <div class="form-group">
+      {% if form.birthday.errors %}
+        {% for error in form.birthday.errors %}
+          <div class="alert alert-danger">{{ error }}</div>
+        {% endfor %}
+      {% endif %}
+      <span style="color: red;">*</span> {{ form.birthday.label() }}
+      {{ form.birthday(class="form-control", readonly="readonly") }}
+  </div>
+
+  <div class="form-group">
+      {% if form.move_in_date.errors %}
+        {% for error in form.move_in_date.errors %}
+          <div class="alert alert-danger">{{ error }}</div>
+        {% endfor %}
+      {% endif %}
+      <span style="color: red;">*</span> {{ form.move_in_date.label() }}
+      {{ form.move_in_date(class="form-control", readonly="readonly") }}
+  </div>
+
+  <div class="form-group">
+      {% if form.gender.errors %}
+        {% for error in form.gender.errors %}
+          <div class="alert alert-danger">{{ error }}</div>
+        {% endfor %}
+      {% endif %}
+      <span style="color: red;">*</span> {{ form.gender.label() }}
+      {{ form.gender(class="form-control") }}
+  </div>
+
+  <div class="form-group">
+      {% if form.village.errors %}
+        {% for error in form.village.errors %}
+          <div class="alert alert-danger">{{ error }}</div>
+        {% endfor %}
+      {% endif %}
+      <span style="color: red;">*</span> {{ form.village.label() }}
+      {{ form.village(class="form-control") }}
+  </div>
+
+  <div class="form-group">
+      {% if form.neighborhood.errors %}
+        {% for error in form.neighborhood.errors %}
+          <div class="alert alert-danger">{{ error }}</div>
+        {% endfor %}
+      {% endif %}
+      <span style="color: red;">*</span> {{ form.neighborhood.label() }}
+      {{ form.neighborhood(class="form-control") }}
+  </div>
+
+  <div class="form-group">
+      {% if form.address.errors %}
+        {% for error in form.address.errors %}
+          <div class="alert alert-danger">{{ error }}</div>
+        {% endfor %}
+      {% endif %}
+      <span style="color: red;">*</span> {{ form.address.label() }}
+      {{ form.address(class="form-control") }}
+  </div>
+
+  <div class="form-group">
+      {% if form.status.errors %}
+        {% for error in form.status.errors %}
+          <div class="alert alert-danger">{{ error }}</div>
+        {% endfor %}
+      {% endif %}
+      {{ form.status.label() }}
+      {{ form.status(class="form-control") }}
+  </div>
+
+  <div class="form-group">
+      {% if form.note.errors %}
+        {% for error in form.note.errors %}
+          <div class="alert alert-danger">{{ error }}</div>
+        {% endfor %}
+      {% endif %}
+      {{ form.note.label() }}
+      {{ form.note(class="form-control") }}
+  </div>
+
+  <div class="form-group">
+      {% if form.home_tel.errors %}
+        {% for error in form.home_tel.errors %}
+          <div class="alert alert-danger">{{ error }}</div>
+        {% endfor %}
+      {% endif %}
+      {{ form.home_tel.label() }}
+      {{ form.home_tel(class="form-control") }}
+  </div>
+
+  <div class="form-group">
+      {% if form.dad_tel.errors %}
+        {% for error in form.dad_tel.errors %}
+          <div class="alert alert-danger">{{ error }}</div>
+        {% endfor %}
+      {% endif %}
+      {{ form.dad_tel.label() }}
+      {{ form.dad_tel(class="form-control") }}
+  </div>
+
+  <div class="form-group">
+      {% if form.mom_tel.errors %}
+        {% for error in form.mom_tel.errors %}
+          <div class="alert alert-danger">{{ error }}</div>
+        {% endfor %}
+      {% endif %}
+      {{ form.mom_tel.label() }}
+      {{ form.mom_tel(class="form-control") }}
+  </div>
+
+  <div class="form-group">
+      {% if form.other_tel.errors %}
+        {% for error in form.other_tel.errors %}
+          <div class="alert alert-danger">{{ error }}</div>
+        {% endfor %}
+      {% endif %}
+      {{ form.other_tel.label() }}
+      {{ form.other_tel(class="form-control") }}
+  </div>
+
+  <div class="form-group">
+      {% if form.contact_address.errors %}
+        {% for error in form.contact_address.errors %}
+          <div class="alert alert-danger">{{ error }}</div>
+        {% endfor %}
+      {% endif %}
+      <span style="color: red;">*</span> {{ form.contact_address.label() }}
+      {{ form.contact_address(class="form-control") }}
+  </div>
+
+  <div class="form-group">
+      {% if form.picture.errors %}
+        {% for error in form.picture.errors %}
+          <div class="alert alert-danger">{{ error }}</div>
+        {% endfor %}
+      {% endif %}
+      {{ form.picture.label() }}
+      {% if picture_name %}
+        <a class="btn btn-info btn-xs" href="{{ request.static_path('newcomer:static/pictures/' + picture_name) }}">點我看已上傳大頭照</a>
+      {% endif %}
+      {{ form.picture() }}
+  </div>
+
+  {% if form.is_checked.errors %}
+    {% for error in form.is_checked.errors %}
+      <div class="alert alert-danger">{{ error }}</div>
+    {% endfor %}
+  {% endif %}
+  <div class="checkbox">
+    <span style="color: red;">*</span> <label>
+      {{ form.is_checked() }} {{ form.is_checked.label.text }}
+    </label>
+  </div>
+  <button type="submit" class="btn btn-primary">送出</button>
+</form>
+{% endblock %}

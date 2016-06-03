@@ -1,0 +1,49 @@
+{% extends "base.jinja2" %}
+{% block signup_detail_stats%} class="active"{% endblock %}
+{% block title %}顯示已報到學生詳細資料{% endblock %}
+{% block content %}
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>序號</th>
+        <th>就學編號</th>
+        <th>學童姓名</th>
+        <th>學童身份證號</th>
+        <th>學號</th>
+        <th>班級</th>
+        <th>座號</th>
+        <th>戶長姓名</th>
+        <th>戶長身份證號</th>
+        <th>出生日期</th>
+        <th>性別</th>
+        <th>遷入日期</th>
+        <th>里</th>
+        <th>鄰</th>
+        <th>戶籍地址</th>
+        <th>動作</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for new_comer in new_comers %}
+        <tr>
+          <td>{{ loop.index }}</td>
+          <td>{% if new_comer.signup_number %}{{ new_comer.signup_number }}{% endif %}</td>
+          <td>{{ new_comer.name }}</td>
+          <td>{{ new_comer.id_number }}</td>
+          <td>{% if new_comer.school_number %}{{ new_comer.school_number }}{% endif %}</td>
+          <td>{% if new_comer.klass %}{{ new_comer.klass }}{% endif %}</td>
+          <td>{% if new_comer.class_number %}{{ new_comer.class_number }}{% endif %}</td>
+          <td>{{ new_comer.parent_name }}</td>
+          <td>{{ new_comer.parent_id_number }}</td>
+          <td>{{ new_comer.birthday }}</td>
+          <td>{{ new_comer.gender }}</td>
+          <td>{{ new_comer.move_in_date }}</td>
+          <td>{{ new_comer.village }}</td>
+          <td>{{ new_comer.neighborhood }}</td>
+          <td>{{ new_comer.address }}</td>
+          <td><a href="{{ request.route_path('edit', id=new_comer.id) }}" class="btn btn-primary">修改</a></td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

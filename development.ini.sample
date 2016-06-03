@@ -1,0 +1,87 @@
+###
+# app configuration
+# http://docs.pylonsproject.org/projects/pyramid/en/1.5-branch/narr/environment.html
+###
+
+[app:main]
+use = egg:newcomer
+
+pyramid.reload_templates = true
+pyramid.debug_authorization = false
+pyramid.debug_notfound = false
+pyramid.debug_routematch = false
+pyramid.includes =
+    pyramid_debugtoolbar
+
+production_mode = false
+
+# activate some useful filters of jinja2
+jinja2.filters =
+    route_url = pyramid_jinja2.filters:route_url_filter
+    static_url = pyramid_jinja2.filters:static_url_filter
+    route_path = pyramid_jinja2.filters:route_path_filter
+    static_path = pyramid_jinja2.filters:static_path_filter
+
+# session settings
+#
+# using builtin session mechanism
+sessions.secret = 29c42fcd091e725a0f283bb47e4d5c76b59cbd53
+#
+# using pyramid_redis_sessions
+#redis.sessions.secret = 29c42fcd091e725a0f283bb47e4d5c76b59cbd53
+
+# database settings
+#
+# Note that you need to install the real database driver
+# by yourself, like mysql-connector-python.
+# The url syntax can be found here: http://docs.sqlalchemy.org/en/latest/core/engines.html
+#sqlalchemy.url = mysql+mysqlconnector://DB_USER:DB_PASS@DB_HOST/DB_NAME
+#sqlalchemy.url = sqlite:////absolute/path/to/foo.db
+
+# By default, the toolbar only appears for clients from IP addresses
+# '127.0.0.1' and '::1'.
+#debugtoolbar.hosts = 127.0.0.1 ::1
+
+# 學校名稱
+school_name = 學校名稱
+
+###
+# wsgi server configuration
+###
+
+[server:main]
+use = egg:waitress#main
+host = 0.0.0.0
+port = 6543
+
+###
+# logging configuration
+# http://docs.pylonsproject.org/projects/pyramid/en/1.5-branch/narr/logging.html
+###
+
+[loggers]
+keys = root, newcomer
+
+[handlers]
+keys = console
+
+[formatters]
+keys = generic
+
+[logger_root]
+level = INFO
+handlers = console
+
+[logger_newcomer]
+level = DEBUG
+handlers =
+qualname = newcomer
+
+[handler_console]
+class = StreamHandler
+args = (sys.stderr,)
+level = NOTSET
+formatter = generic
+
+[formatter_generic]
+format = %(asctime)s %(levelname)-5.5s [%(name)s][%(threadName)s] %(message)s
