@@ -31,12 +31,22 @@
               <li{% block signup_stats %}{% endblock %}><a href="{{ 'home'|route_path }}">報到</a></li>
               <li{% block add_stats %}{% endblock %}><a href="{{ 'add'|route_path }}">新增</a></li>
               <li{% block signup_detail_stats %}{% endblock %}><a href="{{ 'signup_detail'|route_path }}">顯示已報到學生資訊</a></li>
-              <li{% block upload_via_enroll_stats %}{% endblock %}><a href="{{ 'upload_via_enroll'|route_path }}">上傳新生分發名單</a></li>
-              <li><a href="{{ 'export_to_schoolsoft'|route_path }}">匯出至校務系統（編班用）</a></li>
-              <li{% block upload_via_schoolsoft_stats %}{% endblock %}><a href="{{ 'upload_via_schoolsoft'|route_path }}">匯入校務系統（更新學號等資料）</a></li>
-              <li><a href="{{ 'export_to_enroll'|route_path }}">匯出至 enroll 系統</a></li>
-              <li><a href="{{ 'export_to_moe'|route_path }}">匯出至教育部系統</a></li>
-              <li><a href="{{ 'export_to_ecard'|route_path }}">匯出大頭照</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">匯入 <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="{{ 'upload_via_enroll'|route_path }}">匯入新生分發名單</a></li>
+                  <li><a href="{{ 'upload_via_schoolsoft'|route_path }}">匯入校務系統（更新學號等資料）</a></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">匯出 <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="{{ 'export_to_schoolsoft'|route_path }}">匯出至校務系統（編班用）</a></li>
+                  <li><a href="{{ 'export_to_enroll'|route_path }}">匯出至 enroll 系統</a></li>
+                  <li><a href="{{ 'export_to_moe'|route_path }}">匯出至教育部系統</a></li>
+                  <li><a href="{{ 'export_to_ecard'|route_path }}">匯出大頭照</a></li>
+                </ul>
+              </li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>

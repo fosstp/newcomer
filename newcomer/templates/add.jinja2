@@ -4,7 +4,10 @@
 {% block content %}
 <form action="" enctype="multipart/form-data" method="post">
   
-  <p><span style="color: red;">*</span> 為必填欄位</p>
+  <div class="panel panel-warning">
+    <div class="panel-heading"><h3 class="panel-title">注意</h3></div>
+    <div class="panel-body"><span style="color: red;">*</span> 為必填欄位</div>
+  </div>
   {{ form.id() }}
 
   <div class="form-group">
