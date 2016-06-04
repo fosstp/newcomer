@@ -3,4 +3,4 @@ __pycache__
 production.ini
 development.ini
 *.db
-static/pictures/*
+newcomer/static/pictures/*
