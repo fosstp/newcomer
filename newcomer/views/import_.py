@@ -1,12 +1,12 @@
 from pyramid.view import view_config
 
-@view_config(route_name='upload_via_enroll', renderer='templates/upload_via_enroll.jinja2', request_method='GET')
-def upload_via_enroll_view_via_get(request):
+@view_config(route_name='import_via_hro', renderer='templates/import_via_hro.jinja2', request_method='GET')
+def import_via_hro_view_via_get(request):
     from ..forms import UploadForm
     return {'form': UploadForm()}
 
-@view_config(route_name='upload_via_enroll', renderer='templates/upload_via_enroll.jinja2', request_method='POST')
-def upload_via_enroll_view_via_post(request):
+@view_config(route_name='import_via_hro', renderer='templates/import_via_hro.jinja2', request_method='POST')
+def import_via_hro_view_via_post(request):
     from datetime import datetime
     from pyramid.httpexceptions import HTTPFound
     from pyramid_sqlalchemy import Session
@@ -39,13 +39,13 @@ def upload_via_enroll_view_via_post(request):
     else:
         return {'form': form}
 
-@view_config(route_name='upload_via_schoolsoft', renderer='templates/upload_via_schoolsoft.jinja2', request_method='GET')
-def upload_via_schoolsoft_view_via_get(request):
+@view_config(route_name='import_via_schoolsoft', renderer='templates/import_via_schoolsoft.jinja2', request_method='GET')
+def import_via_schoolsoft_view_via_get(request):
     from ..forms import UploadForm
     return {'form': UploadForm()}
 
-@view_config(route_name='upload_via_schoolsoft', renderer='templates/upload_via_schoolsoft.jinja2', request_method='POST')
-def upload_via_schoolsoft_view_via_post(request):
+@view_config(route_name='import_via_schoolsoft', renderer='templates/import_via_schoolsoft.jinja2', request_method='POST')
+def import_via_schoolsoft_view_via_post(request):
     import shutil, os
     from tempfile import NamedTemporaryFile
     import xlrd
