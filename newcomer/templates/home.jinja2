@@ -6,6 +6,7 @@
     <thead>
       <tr>
         <th>序號</th>
+        <th>就學編號</th>
         <th>學童姓名</th>
         <th>學童身份證號</th>
         <th>戶長姓名</th>
@@ -18,6 +19,7 @@
       {% for new_comer in new_comers %}
         <tr>
           <td>{{ loop.index }}</td>
+          <td>{{ new_comer.signup_number }}</td>
           <td>{{ new_comer.name }}</td>
           <td>{{ new_comer.id_number }}</td>
           <td>{{ new_comer.parent_name }}</td>
