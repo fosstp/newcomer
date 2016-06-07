@@ -36,8 +36,11 @@ redis.sessions.secret = 29c42fcd091e725a0f283bb47e4d5c76b59cbd53
 #sqlalchemy.url = mysql+mysqlconnector://DB_USER:DB_PASS@DB_HOST/DB_NAME
 #sqlalchemy.url = sqlite:////absolute/path/to/foo.db
 
-# 學校名稱
+# 學校名稱，比如濱江國民小學
 school_name = 學校名稱
+
+# 行政區，比如中山區
+section_name = 行政區
 
 ###
 # wsgi server configuration

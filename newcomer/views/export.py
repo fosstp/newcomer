@@ -12,7 +12,10 @@ def export_to_schoolsoft_view(request):
     with NamedTemporaryFile(delete=True) as f:
         
         wb = xlwt.Workbook()
-        ws = wb.add_sheet('{}新生EXCEL檔'.format(request.registry.settings['school_name']))
+        ws = wb.add_sheet('臺北市{}{}新生EXCEL檔'.format(
+            request.registry.settings['section_name'],
+            request.registry.settings['school_name']
+        ))
         ws.write(0, 0, '說明1:', xlwt.easyxf('align: horiz center'))
         ws.write_merge(0, 0, 1, 7, '如果您已幫新生編好班級與學號，則請在”新生學號”與”新生班級”欄位填入資料，則系統會自動幫您將學生做報到已註冊並填入學號與班級', xlwt.easyxf('align: horiz center'))
         ws.write(1, 0, '說明2:', xlwt.easyxf('align: horiz center'))
@@ -75,7 +78,10 @@ def export_to_schoolsoft_view(request):
             move_in_date = str(int(each_newcomer.move_in_date.strftime('%Y')) - 1911) + each_newcomer.move_in_date.strftime('%m%d')
 
             # 就讀學校
-            ws.write(row_counter, 0, request.registry.settings['school_name'])
+            ws.write(row_counter, 0, '臺北市{}{}'.format(
+                request.registry.settings['section_name'],
+                request.registry.settings['school_name']
+            ))
 
             # 編號，直接將 row_counter - 2 即可當作編號
             ws.write(row_counter, 1, row_counter - 2)
@@ -99,7 +105,7 @@ def export_to_schoolsoft_view(request):
             ws.write(row_counter, 11, '臺北市')
 
             # 戶籍地址-鄉鎮市(請填入完整的名稱)
-            ws.write(row_counter, 12, '中山區')
+            ws.write(row_counter, 12, request.registry.settings['section_name'])
 
             # 戶籍地址-村里(請填入完整的名稱)
             ws.write(row_counter, 13, each_newcomer.village)

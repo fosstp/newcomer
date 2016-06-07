@@ -47,7 +47,11 @@ cp production.ini.sample production.ini
 
   7.2 設定學校名稱
 
-    school_name = 您的學校名稱
+    school_name = 濱江國民小學
+
+  7.3 設定學校所在的行政區
+
+    section_name = 中山區
 
 8. 初始化資料庫
 
