@@ -15,6 +15,8 @@ def import_via_hro_view_via_post(request):
 
     form = UploadForm(request.POST)
     if form.validate():
+        # 取得資料庫裡面已有的學生資料，藉此資料來實作 "已存在的學生不更動，只新增不存在的學生" 的功能
+        existed_newcomers = { i.signup_number for i in Session.query(NewComerModel.signup_number) }
         file_content = form.file.data.file.read().decode('cp950')
         content_lines = file_content.split('\r\n')
         for each_line in content_lines:
@@ -34,7 +36,8 @@ def import_via_hro_view_via_post(request):
             new_comer.neighborhood     = splitted_line[10]
             new_comer.address          = splitted_line[11]
             new_comer.note             = splitted_line[14].strip()
-            Session.add(new_comer)
+            if new_comer.signup_number not in existed_newcomers:
+                Session.add(new_comer)
         return HTTPFound(location=request.route_path('home'))
     else:
         return {'form': form}
