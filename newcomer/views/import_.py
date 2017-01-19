@@ -89,7 +89,7 @@ def import_via_schoolsoft_view_via_post(request):
                         new_comer.picture_name = newname
 
                     changed_list.append(new_comer)
-                except sqlalchemy.orm.exc.NoResultFound:
+                except (sqlalchemy.orm.exc.NoResultFound, FileNotFoundError):
                     pass
             if changed_list:
                 Session.add_all(changed_list)
