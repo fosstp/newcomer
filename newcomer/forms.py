@@ -15,9 +15,9 @@ class NewComerForm(Form):
     birthday         = DateField('出生日期', [InputRequired('必填')], default=datetime.now)
     move_in_date     = DateField('遷入日期', [InputRequired('必填')], default=datetime.now)
     gender           = StringField('性別', [InputRequired('必填')])
-    village          = StringField('里', [InputRequired('必填')])
-    neighborhood     = StringField('鄰', [InputRequired('必填')])
-    address          = StringField('戶籍地址', [InputRequired('必填')])
+    village          = StringField('里（比如：成功里）', [InputRequired('必填')])
+    neighborhood     = StringField('鄰（比如：11）', [InputRequired('必填')])
+    address          = StringField('戶籍地址（比如：樂群二路266巷99號）', [InputRequired('必填')])
     note             = StringField('備註')
     status           = SelectField('狀態', [InputRequired('必填')],
                            choices=[('0', '未報到'), ('1', '已報到'), ('2', '他校報到'), ('3', '出國')])

@@ -13,5 +13,5 @@ def signup_detail_view(request):
     from pyramid_sqlalchemy import Session
     from ..models import NewComerModel
 
-    new_comers = Session.query(NewComerModel).filter_by(status=1)
+    new_comers = Session.query(NewComerModel).filter_by(status=1).order_by(NewComerModel.signup_number)
     return {'new_comers': new_comers}
