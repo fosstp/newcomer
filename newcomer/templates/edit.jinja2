@@ -194,7 +194,7 @@
       {% endif %}
       {{ form.picture.label() }}
       {% if picture_name %}
-        <a class="btn btn-info btn-xs" href="{{ request.static_path('newcomer:static/pictures/' + picture_name) }}">點我看已上傳大頭照</a>
+        <a class="btn btn-info btn-xs" target="_blank" href="{{ request.static_path('newcomer:static/pictures/' + picture_name) }}">點我看已上傳大頭照</a>
       {% endif %}
       {{ form.picture() }}
   </div>
