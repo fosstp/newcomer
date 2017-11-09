@@ -1,16 +1,22 @@
 [[source]]
+
 verify_ssl = true
 url = "https://pypi.python.org/simple"
 
+
 [packages]
+
 alembic = "==0.8.6"
 pyramid = "==1.7"
-pyramid_jinja2 = "==2.6.2"
-pyramid_mailer = "==0.14.1"
-pyramid_redis_sessions = "==1.0.1"
-pyramid_sqlalchemy = "==1.6"
-pyramid_tm = "==0.12.1"
-pyramid_wtforms = "==2.4.0"
+"pyramid-jinja2" = "==2.6.2"
+pyramid-mailer = "==0.14.1"
+pyramid-redis-sessions = "==1.0.1"
+pyramid-sqlalchemy = "==1.6"
+pyramid-tm = "==0.12.1"
+pyramid-wtforms = "==2.4.0"
+
 
 [dev-packages]
-pyramid_debugtoolbar = "*"
+
+pyramid-debugtoolbar = "*"
+waitress = "*"
