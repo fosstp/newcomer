@@ -29,6 +29,9 @@ def add_view_via_post(request):
             new_comer.picture_name = picture_name
         # 觸發 auto increment
         new_comer.id = None
+        # 鄰的欄位，應該要純數字。如果使用者誤填了鄰，要刪掉多餘的文字
+        if new_comer.neighborhood.endswith('鄰'):
+            new_comer.neighborhood = new_comer.neighborhood[:-1]
         Session.add(new_comer)
         return HTTPFound(location=request.route_path('home'))
     return {'form': form}
