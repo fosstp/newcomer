@@ -1,6 +1,10 @@
 {% extends "base.jinja2" %}
 {% block title %}新生分發名冊上傳{% endblock %}
 {% block content %}
+<h2>說明</h2>
+<p>請至 <a href="http://enroll.tp.edu.tw">http://enroll.tp.edu.tw/</a> 登入學校帳號 -&gt; 左欄 "新生分發名冊" -&gt; 
+下拉選單選擇 csv 格式 -&gt; 下載檔案後，再將該檔案從此處匯入。</p>
+<br>
 <form action="" enctype="multipart/form-data" method="post">
   <div class="form-group">
       {{ form.file() }}
