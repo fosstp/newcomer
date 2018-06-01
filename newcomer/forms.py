@@ -7,7 +7,7 @@ class UploadForm(Form):
 
 class NewComerForm(Form):
     id = HiddenField()
-    signup_number    = StringField('就學編號')
+    signup_number    = StringField('就學編號（手動新增者免填）')
     name             = StringField('學童姓名', [InputRequired('必填')])
     parent_name      = StringField('戶長姓名', [InputRequired('必填')])
     id_number        = StringField('學童身份證號', [InputRequired('必填')])
@@ -25,6 +25,6 @@ class NewComerForm(Form):
     dad_tel          = StringField('父親電話')
     mom_tel          = StringField('母親電話')
     other_tel        = StringField('其他聯絡電話 (請自行填入需紀錄之資料)')
-    contact_address  = StringField('通訊地址', [InputRequired('必填')])
+    contact_address  = StringField('通訊地址（若同戶籍地址可填"同上"）', [InputRequired('必填')])
     picture          = FileField('大頭照')
     is_checked       = BooleanField('已確認資料正確', [DataRequired('請確認資料正確')])
