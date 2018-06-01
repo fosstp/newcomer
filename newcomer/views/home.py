@@ -5,7 +5,7 @@ def home_view(request):
     from pyramid_sqlalchemy import Session
     from ..models import NewComerModel
 
-    new_comers = Session.query(NewComerModel)
+    new_comers = Session.query(NewComerModel).order_by(NewComerModel.signup_number)
     return {'new_comers': new_comers}
 
 @view_config(route_name='signup_detail', renderer='templates/signup_detail.jinja2')
