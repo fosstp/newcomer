@@ -2,5 +2,6 @@
 __pycache__
 production.ini
 development.ini
+alembic.ini
 *.db
 newcomer/static/pictures/*
