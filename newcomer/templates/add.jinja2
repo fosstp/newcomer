@@ -107,7 +107,7 @@
         {% endfor %}
       {% endif %}
       <span style="color: red;">*</span> {{ form.neighborhood.label() }}
-      {{ form.neighborhood(class="form-control") }}
+      {{ form.neighborhood(class="form-control", type="number") }}
   </div>
 
   <div class="form-group">
@@ -147,7 +147,7 @@
         {% endfor %}
       {% endif %}
       {{ form.home_tel.label() }}
-      {{ form.home_tel(class="form-control") }}
+      {{ form.home_tel(class="form-control", type="number") }}
   </div>
 
   <div class="form-group">
@@ -157,7 +157,7 @@
         {% endfor %}
       {% endif %}
       {{ form.dad_tel.label() }}
-      {{ form.dad_tel(class="form-control") }}
+      {{ form.dad_tel(class="form-control", type="number") }}
   </div>
 
   <div class="form-group">
@@ -167,7 +167,7 @@
         {% endfor %}
       {% endif %}
       {{ form.mom_tel.label() }}
-      {{ form.mom_tel(class="form-control") }}
+      {{ form.mom_tel(class="form-control", type="number") }}
   </div>
 
   <div class="form-group">
