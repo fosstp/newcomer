@@ -24,24 +24,24 @@
       </tr>
     </thead>
     <tbody>
-      {% for new_comer in new_comers %}
+      {% for new_student in new_students %}
         <tr>
           <td>{{ loop.index }}</td>
-          <td>{% if new_comer.signup_number %}{{ new_comer.signup_number }}{% endif %}</td>
-          <td>{{ new_comer.name }}</td>
-          <td>{{ new_comer.id_number }}</td>
-          <td>{% if new_comer.school_number %}{{ new_comer.school_number }}{% endif %}</td>
-          <td>{% if new_comer.klass %}{{ new_comer.klass }}{% endif %}</td>
-          <td>{% if new_comer.class_number %}{{ new_comer.class_number }}{% endif %}</td>
-          <td>{{ new_comer.parent_name }}</td>
-          <td>{{ new_comer.parent_id_number }}</td>
-          <td>{{ new_comer.birthday }}</td>
-          <td>{{ new_comer.gender }}</td>
-          <td>{{ new_comer.move_in_date }}</td>
-          <td>{{ new_comer.village }}</td>
-          <td>{{ new_comer.neighborhood }}</td>
-          <td>{{ new_comer.address }}</td>
-          <td><a href="{{ request.route_path('edit', id=new_comer.id) }}" class="btn btn-primary">修改</a></td>
+          <td>{% if new_student.signup_studentr %}{{ new_student.signup_studentr }}{% endif %}</td>
+          <td>{{ new_student.name }}student
+          <td>{{ new_student.id_numbstudent</td>
+          <td>{% if new_student.school_studentr %}{{ new_student.school_studentr }}{% endif %}</td>
+          <td>{% if new_student.klass %studentew_student.klass }studentndif %}</td>
+          <td>{% if new_student.class_nstudent %}{{ new_student.class_nstudent }}{% endif %}</td>
+          <td>{{ new_student.parent_student}}</td>
+          <td>{{ new_student.parent_studentmber }}</td>
+          <td>{{ new_student.birthdastudent/td>
+          <td>{{ new_student.gender studentd>
+          <td>{{ new_student.move_instudent }}</td>
+          <td>{{ new_student.villagestudenttd>
+          <td>{{ new_student.neighbostudent }}</td>
+          <td>{{ new_student.addressstudenttd>
+          <td><a href="{{ request.route_path('edit', id=new_student.id) }}"students="btn btn-primary">修改</a></td>
         </tr>
       {% endfor %}
     </tbody>

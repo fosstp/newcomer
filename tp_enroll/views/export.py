@@ -73,9 +73,9 @@ def export_to_schoolsoft_view(request):
         row_counter = 3
 
         # 只撈出已報到的學生
-        for each_newcomer in Session.query(NewComerModel).filter_by(status=1):
-            birthday = str(int(each_newcomer.birthday.strftime('%Y')) - 1911) + each_newcomer.birthday.strftime('%m%d')
-            move_in_date = str(int(each_newcomer.move_in_date.strftime('%Y')) - 1911) + each_newcomer.move_in_date.strftime('%m%d')
+        for each_new_student in Session.query(NewComerModel).filter_by(status=1):
+            birthday = str(int(each_new_student.birthday.strftime('%Y')) - 1911) + each_new_student.birthday.strftime('%m%d')
+            move_in_date = str(int(each_new_student.move_in_date.strftime('%Y')) - 1911) + each_new_student.move_in_date.strftime('%m%d')
 
             # 就讀學校
             ws.write(row_counter, 0, '臺北市{}{}'.format(
@@ -87,16 +87,16 @@ def export_to_schoolsoft_view(request):
             ws.write(row_counter, 1, row_counter - 2)
 
             # 姓名
-            ws.write(row_counter, 2, each_newcomer.name)
+            ws.write(row_counter, 2, each_new_student.name)
 
             # 身分證字號
-            ws.write(row_counter, 3, each_newcomer.id_number)
+            ws.write(row_counter, 3, each_new_student.id_number)
 
             # 性別
-            ws.write(row_counter, 4, each_newcomer.gender)
+            ws.write(row_counter, 4, each_new_student.gender)
 
             # 聯絡電話（宅）
-            ws.write(row_counter, 7, each_newcomer.home_tel)
+            ws.write(row_counter, 7, each_new_student.home_tel)
 
             # 出生年月日
             ws.write(row_counter, 8, birthday)
@@ -108,34 +108,34 @@ def export_to_schoolsoft_view(request):
             ws.write(row_counter, 12, request.registry.settings['section_name'])
 
             # 戶籍地址-村里(請填入完整的名稱)
-            ws.write(row_counter, 13, each_newcomer.village)
+            ws.write(row_counter, 13, each_new_student.village)
             
             # 戶籍地址-鄰(請填入半形數字)
-            ws.write(row_counter, 14, str(int(each_newcomer.neighborhood)))
+            ws.write(row_counter, 14, str(int(each_new_student.neighborhood)))
             
             # 戶籍地址-住址(包含路巷段號樓等)
-            ws.write(row_counter, 15, each_newcomer.address)
+            ws.write(row_counter, 15, each_new_student.address)
             
             # 通訊地址-住址(包含路巷段號樓等)
-            ws.write(row_counter, 21, each_newcomer.contact_address)
+            ws.write(row_counter, 21, each_new_student.contact_address)
             
             # 遷入日期
             ws.write(row_counter, 22, move_in_date)
             
             # 手機號碼(父)(請輸入一組號碼，不能輸入中文字)
-            ws.write(row_counter, 27, each_newcomer.dad_tel)
+            ws.write(row_counter, 27, each_new_student.dad_tel)
 
             # 手機號碼(母)(請輸入一組號碼，不能輸入中文字)
-            ws.write(row_counter, 28, each_newcomer.mom_tel)
+            ws.write(row_counter, 28, each_new_student.mom_tel)
             
             # 新生學號(需以數字填寫)
-            ws.write(row_counter, 33, each_newcomer.school_number)
+            ws.write(row_counter, 33, each_new_student.school_number)
 
             # 新生班級(需以數字填寫)
-            ws.write(row_counter, 34, each_newcomer.klass)
+            ws.write(row_counter, 34, each_new_student.klass)
 
             # 新生座號(需以數字填寫)
-            ws.write(row_counter, 35, each_newcomer.class_number)
+            ws.write(row_counter, 35, each_new_student.class_number)
 
             row_counter += 1
 
@@ -156,14 +156,14 @@ def export_to_enroll_view(request):
 
     f.write('就學編號,姓名,身份證號,聯絡電話,報到否(0/1)\r\n'.encode('cp950', 'replace'))
     
-    for each_newcomer in Session.query(NewComerModel).filter(NewComerModel.signup_number!=None):
-        if each_newcomer.status == 1:
+    for each_new_student in Session.query(NewComerModel).filter(NewComerModel.signup_number!=None):
+        if each_new_student.status == 1:
             f.write('{0},{1},{2},,{3}\r\n'.format(
-                each_newcomer.signup_number, each_newcomer.name, each_newcomer.id_number, 1
+                each_new_student.signup_number, each_new_.name, each_new_student.id_number, 1
             ).encode('cp950', 'replace'))
         else:
             f.write('{0},{1},{2},,{3}\r\n'.format(
-                each_newcomer.signup_number, each_newcomer.name, each_newcomer.id_number, 0
+                each_new_student.signup_number, each_new_student.name, each_new_student.id_number, 0
             ).encode('cp950', 'replace'))
 
     f.flush()
@@ -195,10 +195,10 @@ def export_to_moe_view(request):
         regex = re.compile(r'^[A-Z]\d{9}$') # 比對是否為身分證號
         
         counter = 1
-        for each_newcomer in Session.query(NewComerModel).filter(NewComerModel.status==1):
-            if regex.match(each_newcomer.id_number):
-                ws.write(counter, 0, each_newcomer.name)
-                ws.write(counter, 1, each_newcomer.id_number)
+        for each_new_student in Session.query(NewComerModel).filter(NewComerModel.status==1):
+            if regex.match(each_new_student.id_number):
+                ws.write(counter, 0, each_new_student.name)
+                ws.write(counter, 1, each_new_student.id_number)
                 counter += 1
 
         wb.save(f.name)
@@ -222,7 +222,7 @@ def export_to_ecard_view(request):
 
     with NamedTemporaryFile(delete=True) as f:
 
-        os.chdir(resource_filename('newcomer', 'static/pictures'))
+        os.chdir(resource_filename('tp_enroll', 'static/pictures'))
 
         with ZipFile(f.name, 'w') as z:
             for i in glob.glob('*'):
