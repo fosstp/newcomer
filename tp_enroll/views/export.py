@@ -6,7 +6,7 @@ def export_to_schoolsoft_view(request):
     import xlwt
     from datetime import datetime
     from pyramid_sqlalchemy import Session
-    from ..models import NewComerModel
+    from ..models import NewStudentModel
     from pyramid.response import FileResponse
 
     with NamedTemporaryFile(delete=True) as f:
@@ -73,7 +73,7 @@ def export_to_schoolsoft_view(request):
         row_counter = 3
 
         # 只撈出已報到的學生
-        for each_new_student in Session.query(NewComerModel).filter_by(status=1):
+        for each_new_student in Session.query(NewStudentModel).filter_by(status=1):
             birthday = str(int(each_new_student.birthday.strftime('%Y')) - 1911) + each_new_student.birthday.strftime('%m%d')
             move_in_date = str(int(each_new_student.move_in_date.strftime('%Y')) - 1911) + each_new_student.move_in_date.strftime('%m%d')
 
@@ -149,14 +149,14 @@ def export_to_schoolsoft_view(request):
 def export_to_enroll_view(request):
     import io
     from pyramid_sqlalchemy import Session
-    from ..models import NewComerModel
+    from ..models import NewStudentModel
     from pyramid.response import FileIter
 
     f = io.BytesIO()
 
     f.write('就學編號,姓名,身份證號,聯絡電話,報到否(0/1)\r\n'.encode('cp950', 'replace'))
     
-    for each_new_student in Session.query(NewComerModel).filter(NewComerModel.signup_number!=None):
+    for each_new_student in Session.query(NewStudentModel).filter(NewStudentModel.signup_number!=None):
         if each_new_student.status == 1:
             f.write('{0},{1},{2},,{3}\r\n'.format(
                 each_new_student.signup_number, each_new_.name, each_new_student.id_number, 1
@@ -182,7 +182,7 @@ def export_to_moe_view(request):
     from tempfile import NamedTemporaryFile
     import xlwt
     from pyramid_sqlalchemy import Session
-    from ..models import NewComerModel
+    from ..models import NewStudentModel
     from pyramid.response import FileResponse
 
     with NamedTemporaryFile(delete=True) as f:
@@ -195,7 +195,7 @@ def export_to_moe_view(request):
         regex = re.compile(r'^[A-Z]\d{9}$') # 比對是否為身分證號
         
         counter = 1
-        for each_new_student in Session.query(NewComerModel).filter(NewComerModel.status==1):
+        for each_new_student in Session.query(NewStudentModel).filter(NewStudentModel.status==1):
             if regex.match(each_new_student.id_number):
                 ws.write(counter, 0, each_new_student.name)
                 ws.write(counter, 1, each_new_student.id_number)
