@@ -19,25 +19,25 @@ aptitude install python3 python3-dev build-essential
 3. 建立 virtualenv
 
 mkdir ~/venv
-virtualenv -p python3 ~/venv/newcomer
+virtualenv -p python3 ~/venv/tp_enroll
 
 4. 拉下 git repo
 
 mkdir ~/git && cd ~/git
-git clone https://github.com/fosstp/newcomer
+git clone https://github.com/fossnio/tp_enroll
 
 5. 進入 virtualenv
 
-source ~/venv/newcomer/bin/activate
+source ~/venv/tp_enroll/bin/activate
 
 6. 安裝系統需要的程式套件
 
-cd ~/git/newcomer
+cd ~/git/tp_enroll
 python setup.py develop
 
 7. 更改設定檔
 
-cd ~/git/newcomer
+cd ~/git/tp_enroll
 cp production.ini.sample production.ini
 
 更改 production.ini
@@ -55,12 +55,12 @@ cp production.ini.sample production.ini
 
 8. 初始化資料庫
 
-cd ~/git/newcomer
+cd ~/git/tp_enroll
 python create_db.py production.ini
 
 9. 啟動網站
 
-cd ~/git/newcomer
+cd ~/git/tp_enroll
 pserve production.ini
 
 10. 打開瀏覽器瀏覽 http://localhost:6543

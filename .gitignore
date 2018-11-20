@@ -4,4 +4,4 @@ production.ini
 development.ini
 alembic.ini
 *.db
-newcomer/static/pictures/*
+tp_enroll/static/pictures/*

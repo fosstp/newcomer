@@ -5,7 +5,7 @@ from pyramid_wtforms.validators import FileRequired, InputRequired, DataRequired
 class UploadForm(Form):
     file = FileField('檔案', [FileRequired()])
 
-class NewComerForm(Form):
+class NewStudentForm(Form):
     id = HiddenField()
     signup_number    = StringField('就學編號（手動新增者免填）')
     name             = StringField('學童姓名', [InputRequired('必填')])

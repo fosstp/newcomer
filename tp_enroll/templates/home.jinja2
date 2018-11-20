@@ -16,24 +16,24 @@
       </tr>
     </thead>
     <tbody>
-      {% for new_comer in new_comers %}
+      {% for new_student in new_students %}
         <tr>
           <td>{{ loop.index }}</td>
-          <td>{{ new_comer.signup_number }}</td>
-          <td>{{ new_comer.name }}</td>
-          <td>{{ new_comer.id_number }}</td>
-          <td>{{ new_comer.parent_name }}</td>
-          <td>{{ new_comer.parent_id_number }}</td>
-          {% if new_comer.status == 0 %}
+          <td>{{ new_student.signup_number }}</td>
+          <td>{{ new_student.name }}</td>
+          <td>{{ new_student.id_number }}</td>
+          <td>{{ new_student.parent_name }}</td>
+          <td>{{ new_student.parent_id_number }}</td>
+          {% if new_student.status == 0 %}
             <td>未報到</td>
-          {% elif new_comer.status == 1 %}
+          {% elif new_student.status == 1 %}
             <td class="success">已報到</td>
-          {% elif new_comer.status == 2 %}
+          {% elif new_student.status == 2 %}
             <td class="info">他校報到</td>
-          {% elif new_comer.status == 3 %}
+          {% elif new_student.status == 3 %}
             <td class="info">出國</td>
           {% endif%}
-          <td><a href="{{ request.route_path('edit', id=new_comer.id) }}" class="btn btn-primary">修改</a></td>
+          <td><a href="{{ request.route_path('edit', id=new_student.id) }}" class="btn btn-primary">修改</a></td>
         </tr>
       {% endfor %}
     </tbody>

@@ -40,8 +40,5 @@ def main(global_config, **settings):
     config.add_route('export_to_moe', '/export/moe')
     config.add_route('export_to_ecard', '/export/ecard')
 
-    # i18n settings
-    #config.add_translation_dirs('newcomer:locale')
-
     config.scan()
     return config.make_wsgi_app()

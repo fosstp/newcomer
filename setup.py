@@ -22,9 +22,9 @@ requires = [
     'waitress',
     ]
 
-setup(name='newcomer',
+setup(name='tp_enroll',
       version='0.0',
-      description='newcomer',
+      description='tp_enroll',
       long_description=README + '\n\n' + CHANGES,
       classifiers=[
         "Programming Language :: Python",
@@ -41,9 +41,9 @@ setup(name='newcomer',
       zip_safe=False,
       install_requires=requires,
       tests_require=requires,
-      test_suite="newcomer",
+      test_suite="tp_enroll",
       entry_points="""\
       [paste.app_factory]
-      main = newcomer:main
+      main = tp_enroll:main
       """,
       )

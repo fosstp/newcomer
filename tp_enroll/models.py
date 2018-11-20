@@ -2,9 +2,9 @@ from pyramid_sqlalchemy import BaseObject
 from sqlalchemy import Column, Integer, String, Date, DateTime
 from datetime import datetime
 
-class NewComerModel(BaseObject):
+class NewStudentModel(BaseObject):
 
-    __tablename__ = 'newcomer'
+    __tablename__ = 'new_students'
 
     # primary key
     id = Column(Integer, primary_key=True)

@@ -1,0 +1,49 @@
+{% extends "base.jinja2" %}
+{% block signup_detail_stats%} class="active"{% endblock %}
+{% block title %}顯示已報到學生詳細資料{% endblock %}
+{% block content %}
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>序號</th>
+        <th>就學編號</th>
+        <th>學童姓名</th>
+        <th>學童身份證號</th>
+        <th>學號</th>
+        <th>班級</th>
+        <th>座號</th>
+        <th>戶長姓名</th>
+        <th>戶長身份證號</th>
+        <th>出生日期</th>
+        <th>性別</th>
+        <th>遷入日期</th>
+        <th>里</th>
+        <th>鄰</th>
+        <th>戶籍地址</th>
+        <th>動作</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for new_student in new_students %}
+        <tr>
+          <td>{{ loop.index }}</td>
+          <td>{% if new_student.signup_studentr %}{{ new_student.signup_studentr }}{% endif %}</td>
+          <td>{{ new_student.name }}student
+          <td>{{ new_student.id_numbstudent</td>
+          <td>{% if new_student.school_studentr %}{{ new_student.school_studentr }}{% endif %}</td>
+          <td>{% if new_student.klass %studentew_student.klass }studentndif %}</td>
+          <td>{% if new_student.class_nstudent %}{{ new_student.class_nstudent }}{% endif %}</td>
+          <td>{{ new_student.parent_student}}</td>
+          <td>{{ new_student.parent_studentmber }}</td>
+          <td>{{ new_student.birthdastudent/td>
+          <td>{{ new_student.gender studentd>
+          <td>{{ new_student.move_instudent }}</td>
+          <td>{{ new_student.villagestudenttd>
+          <td>{{ new_student.neighbostudent }}</td>
+          <td>{{ new_student.addressstudenttd>
+          <td><a href="{{ request.route_path('edit', id=new_student.id) }}"students="btn btn-primary">修改</a></td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
