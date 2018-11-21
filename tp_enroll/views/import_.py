@@ -11,12 +11,12 @@ def import_via_hro_view_via_post(request):
     from pyramid.httpexceptions import HTTPFound
     from pyramid_sqlalchemy import Session
     from ..forms import UploadForm
-    from ..models import NewComerModel
+    from ..models import NewStudentModel
 
     form = UploadForm(request.POST)
     if form.validate():
         # 取得資料庫裡面已有的學生資料，藉此資料來實作 "已存在的學生不更動，只新增不存在的學生" 的功能
-        existed_new_students = { i.signup_number for i in Session.query(NewComerModel.signup_number) }
+        existed_new_students = { i.signup_number for i in Session.query(NewStudentModel.signup_number) }
         file_content = form.file.data.file.read().decode('cp950')
         content_lines = file_content.split('\r\n')
         for each_line in content_lines:
@@ -56,7 +56,7 @@ def import_via_schoolsoft_view_via_post(request):
     from pkg_resources import resource_filename
     from pyramid.httpexceptions import HTTPFound
     from pyramid_sqlalchemy import Session
-    from ..models import NewComerModel
+    from ..models import NewStudentModel
     from ..forms import UploadForm
 
     form = UploadForm(request.POST)
@@ -73,7 +73,7 @@ def import_via_schoolsoft_view_via_post(request):
             changed_list = []
             for i in range(3, table.nrows):
                 try:
-                    new_student = Session.query(NewComerModel).filter_by(id_number=table.cell(i, 3).value).one()
+                    new_student = Session.query(NewStudentModel).filter_by(id_number=table.cell(i, 3).value).one()
                     new_student.school_number = table.cell(i, 33).value
                     new_student.klass         = table.cell(i, 34).value
                     new_student.class_number  = table.cell(i, 35).value
