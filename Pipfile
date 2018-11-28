@@ -13,12 +13,12 @@ pyramid-sqlalchemy = "*"
 pyramid-tm = "*"
 pyramid-wtforms = "*"
 pymysql = "*"
-fabric = "*"
+invoke = "*"
 
 [dev-packages]
 pyramid-debugtoolbar = "*"
 waitress = "*"
-e1839a8 = {editable = true,path = "."}
+e1839a8 = {path = ".",editable = true}
 pytest = "*"
 pylint = "*"
 rope = "*"
