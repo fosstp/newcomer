@@ -5,3 +5,4 @@ development.ini
 alembic.ini
 *.db
 tp_enroll/static/pictures/*
+.venv
