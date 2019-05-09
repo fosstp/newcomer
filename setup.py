@@ -16,7 +16,7 @@ requires = [
     'pyramid_wtforms',
     'pyramid_tm',
     'pyramid_sqlalchemy',
-    'pyramid_redis_sessions',
+    'pyramid_beaker',
     'alembic',
     'xlwt',
     'waitress',

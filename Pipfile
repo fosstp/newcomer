@@ -14,12 +14,13 @@ pyramid-wtforms = "*"
 pymysql = "*"
 invoke = "*"
 pyramid-beaker = "*"
+xlwt = "*"
 
 [dev-packages]
 pyramid-debugtoolbar = "*"
 waitress = "*"
-e1839a8 = {path = ".",editable = true}
 pytest = "*"
 rope = "*"
 tox = "*"
 flake8 = "*"
+tp_enroll = {path = ".",editable = true}

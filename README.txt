@@ -8,59 +8,55 @@ GNU GPL v2
 為避免影響系統環境，建議使用 virtualenv / pyven 建立獨立執行的環境，
 以下範例以 Debian 為操作環境
 
-1. 安裝 virtualenv 套件
 
-aptitude update && aptitude install python-virtualenv
+1. 安裝 python3 相關套件
 
-2. 安裝 python3 套件
+apt install python3 python3-dev python3-venv build-essential
 
-aptitude install python3 python3-dev build-essential
 
-3. 建立 virtualenv
-
-mkdir ~/venv
-virtualenv -p python3 ~/venv/tp_enroll
-
-4. 拉下 git repo
+2. 拉下 git repo
 
 mkdir ~/git && cd ~/git
-git clone https://github.com/fossnio/tp_enroll
+git clone https://github.com/fossnio/tp_enroll.git
 
-5. 進入 virtualenv
+3. 建立 venv 環境
 
-source ~/venv/tp_enroll/bin/activate
+cd tp_enroll
+python3 -m venv .venv
 
-6. 安裝系統需要的程式套件
+4. 進入 virtualenv
 
-cd ~/git/tp_enroll
-python setup.py develop
+source .venv/bin/activate
 
-7. 更改設定檔
+5. 安裝系統需要的程式套件
 
-cd ~/git/tp_enroll
+pip install pip setuptools pipenv -U
+pipenv sync
+
+6. 更改設定檔
+
 cp production.ini.sample production.ini
 
-更改 production.ini
-  7.1 一般來說資料庫跑 sqlite3 就很夠了，所以可以啟用 sqlite3 backend。比方以下範例是指定資料庫檔案位置在 /foo/bar/database.db:
+7. 更改 production.ini
 
-    sqlalchemy.url = sqlite:////foo/bar/database.db
+一般來說資料庫跑 sqlite3 就很夠了，所以可以啟用 sqlite3 backend。比方以下範例是指定資料庫檔案位置在 /foo/bar/database.db:
 
-  7.2 設定學校名稱
+sqlalchemy.url = sqlite:////foo/bar/database.db
 
-    school_name = 濱江國民小學
+設定學校名稱
 
-  7.3 設定學校所在的行政區
+school_name = 濱江國民小學
 
-    section_name = 中山區
+設定學校所在的行政區
+
+section_name = 中山區
 
 8. 初始化資料庫
 
-cd ~/git/tp_enroll
 python create_db.py production.ini
 
 9. 啟動網站
 
-cd ~/git/tp_enroll
 pserve production.ini
 
 10. 打開瀏覽器瀏覽 http://localhost:6543

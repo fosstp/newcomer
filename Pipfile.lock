@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "56560d3a508c40612e5dbee5c86565ef660f816c901910fcb84df5d9ce5886fa"
+            "sha256": "ccf756c91823d8acff3bb26c739c55857588646ff474ecc2ddec01c5507e68e5"
         },
         "pipfile-spec": 6,
         "requires": {},
@@ -243,6 +243,14 @@
             ],
             "version": "==2.2.1"
         },
+        "xlwt": {
+            "hashes": [
+                "sha256:a082260524678ba48a297d922cc385f58278b8aa68741596a87de01a9c628b2e",
+                "sha256:c59912717a9b28f1a3c2a98fd60741014b06b043936dcecbc113eaaada156c88"
+            ],
+            "index": "pypi",
+            "version": "==1.3.0"
+        },
         "zope.deprecation": {
             "hashes": [
                 "sha256:0d453338f04bacf91bbfba545d8bcdf529aa829e67b705eac8c1a7fdce66e2df",
@@ -313,10 +321,6 @@
                 "sha256:f0b870f674851ecbfbbbd364d6b5cbdff9dcedbc7f3f5e18a6891057f21fe399"
             ],
             "version": "==19.1.0"
-        },
-        "e1839a8": {
-            "editable": true,
-            "path": "."
         },
         "entrypoints": {
             "hashes": [
@@ -621,6 +625,10 @@
             "index": "pypi",
             "version": "==3.9.0"
         },
+        "tp-enroll": {
+            "editable": true,
+            "path": "."
+        },
         "transaction": {
             "hashes": [
                 "sha256:726059c461b9ec4e69e5bead6680667a3db01bf2adf901f23e4031228a0f9f9f",
@@ -676,6 +684,7 @@
                 "sha256:a082260524678ba48a297d922cc385f58278b8aa68741596a87de01a9c628b2e",
                 "sha256:c59912717a9b28f1a3c2a98fd60741014b06b043936dcecbc113eaaada156c88"
             ],
+            "index": "pypi",
             "version": "==1.3.0"
         },
         "zope.deprecation": {
