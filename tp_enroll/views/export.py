@@ -159,7 +159,7 @@ def export_to_enroll_view(request):
     for each_new_student in Session.query(NewStudentModel).filter(NewStudentModel.signup_number!=None):
         if each_new_student.status == 1:
             f.write('{0},{1},{2},,{3}\r\n'.format(
-                each_new_student.signup_number, each_new_.name, each_new_student.id_number, 1
+                each_new_student.signup_number, each_new_student.name, each_new_student.id_number, 1
             ).encode('cp950', 'replace'))
         else:
             f.write('{0},{1},{2},,{3}\r\n'.format(
